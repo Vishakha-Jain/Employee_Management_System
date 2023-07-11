@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Update_Employee</title>
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <h1 class="text-center my-3">Update Employee</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="card">
+            <div class="card-body">
+              <form action="/update-success_emp/{{emp.id}}/" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="name">Employee name:</label>
+                  <input type="text" class="form-control" name="emp_name" id="name" placeholder="Enter Employee name" value="{{emp.name}}" Required>
+                </div>
+                <div class="mb-3">
+                  <label for="id">Employee id:</label>
+                  <input type="text" class="form-control" name="emp_id" id="id" placeholder="Enter Employee id" value="{{emp.emp_id}}" Required>
+                </div>
+                <div class="mb-3">
+                  <label for="email">Employee email:</label>
+                  <input type="email" class="form-control" name="emp_email" id="email" placeholder="Enter Employee email" value="{{emp.email_id}}" Required>
+                </div>
+                <div class="mb-3">
+                  <label for="phone">Phone no:</label>
+                  <input type="text" class="form-control" name="emp_phone" id="phone" placeholder="Enter Employee phone number" value="{{emp.phone}}" Required>
+                </div>
+                <div class="mb-3">
+                  <label for="address">Address</label>
+                  <textarea class="form-control" name="emp_address" id="address" placeholder="Enter address"  Required>
+                    {{emp.address}}
+                  </textarea>
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" name="emp_working" id="check" {% if emp.working is True%}checked{%endif%}>
+                  <label for="check">Working</label>
+                </div>
+                <div class="mb-3">
+                  <label for="department">Department</label>
+                  <select class="form-control" id="department" name="emp_department">
+                    <!-- <option value="" selected="selected" disabled="disabled">Department</option> -->
+                    <option value="CSE" {% if emp.department == 'CSE' %}selected{% endif %}>Computer Science</option>
+                    <option value="ME" {% if emp.department == 'ME' %}selected{% endif %}>Mechanical Engineering</option>
+                    <option value="EE" {% if emp.department == 'EE' %}selected{% endif %}>Electrical Engineering</option>
+                  </select>
+                </div>
+                <div class="container text-center">
+                  <button class="btn btn-primary">Update Employee</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
